@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-void: var(--helix-void);
+  --color-surface: var(--helix-surface);
+  --color-raised: var(--helix-raised);
+  --color-fg: var(--helix-fg);
+  --color-muted: var(--helix-muted);
+  --color-faint: var(--helix-faint);
+  --color-line: var(--helix-line);
+  --color-accent: var(--helix-accent);
+  --color-accent-fg: var(--helix-accent-fg);
+  --color-ok: var(--helix-ok);
+  --color-warn: var(--helix-warn);
+  --color-danger: var(--helix-danger);
+
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --shadow-helix: 0 0 0 1px color-mix(in oklab, var(--helix-fg) 10%, transparent),
+    0 18px 40px -24px rgb(0 0 0 / 0.55);
+}
+
+:root,
+[data-theme="dark"] {
+  --helix-void: #0a0b0d;
+  --helix-surface: #14161a;
+  --helix-raised: #1c1f25;
+  --helix-fg: #eceef1;
+  --helix-muted: #8a8f98;
+  --helix-faint: #5c616a;
+  --helix-line: color-mix(in oklab, #eceef1 12%, transparent);
+  --helix-accent: #7ec8c3;
+  --helix-accent-fg: #0a0b0d;
+  --helix-ok: #8fbf9a;
+  --helix-warn: #c4b08a;
+  --helix-danger: #c98986;
+}
+
+[data-theme="light"] {
+  --helix-void: #e7e9ec;
+  --helix-surface: #f7f8f9;
+  --helix-raised: #ffffff;
+  --helix-fg: #16181c;
+  --helix-muted: #5c616a;
+  --helix-faint: #8a8f98;
+  --helix-line: color-mix(in oklab, #16181c 12%, transparent);
+  --helix-accent: #1f6f6a;
+  --helix-accent-fg: #f7f8f9;
+  --helix-ok: #2f6b45;
+  --helix-warn: #8a6a2a;
+  --helix-danger: #8e3d3a;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    height: 100%;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+    background: var(--helix-void);
+    color: var(--helix-fg);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.rounded-helix {
+  border-radius: 2px 16px 2px 16px;
+}
+.rounded-helix-sm {
+  border-radius: 2px 10px 2px 10px;
+}
+.rounded-helix-lg {
+  border-radius: 4px 22px 4px 22px;
+}
+
+.helix-panel {
+  background: color-mix(in oklab, var(--helix-surface) 88%, transparent);
+  box-shadow: var(--shadow-helix);
+  backdrop-filter: blur(18px);
+}
+
+.helix-inset {
+  box-shadow: inset 0 0 0 1px var(--helix-line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+.high-contrast {
+  --helix-line: color-mix(in oklab, var(--helix-fg) 40%, transparent);
+  --helix-muted: var(--helix-fg);
+}
+
+@keyframes helix-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes helix-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.stagger-in > * {
+  animation: helix-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger-in > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.stagger-in > *:nth-child(2) {
+  animation-delay: 40ms;
+}
+.stagger-in > *:nth-child(3) {
+  animation-delay: 80ms;
+}
+.stagger-in > *:nth-child(4) {
+  animation-delay: 120ms;
+}
+.stagger-in > *:nth-child(5) {
+  animation-delay: 160ms;
+}
+.stagger-in > *:nth-child(6) {
+  animation-delay: 200ms;
+}
+
+.os-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--helix-fg) 22%, transparent) transparent;
+}
+.os-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.os-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--helix-fg) 18%, transparent);
+  border-radius: 99px;
+}

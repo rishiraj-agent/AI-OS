@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "AI OS",
+      "hasCanvas": false,
+      "bodyTextLen": 171,
+      "bodyTextHash": "d96bbed8d644b2b31fcd9e3c89585ac1a55ecac05a3cdd13c8768b4b1359877c",
+      "bodyTextPrefix": "AI OS Helix 01Hardware initialization▸ 02Secure verification 03K",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "AI OS",
+      "hasCanvas": false,
+      "bodyTextLen": 171,
+      "bodyTextHash": "d96bbed8d644b2b31fcd9e3c89585ac1a55ecac05a3cdd13c8768b4b1359877c",
+      "bodyTextPrefix": "AI OS Helix 01Hardware initialization▸ 02Secure verification 03K",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
